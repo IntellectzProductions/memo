@@ -20,13 +20,32 @@ This repository contains the example inference script for the MEMO-preview model
     <img src="assets/demo.gif" alt="Demo GIF" style="width: 100%; height: auto;">
 </div>
 
-## Installation
+## Installation for Windows 11 users
 
-```bash
-conda create -n memo python=3.10 -y
-conda activate memo
-conda install -c conda-forge ffmpeg -y
-pip install -e .
+## First Install Pytorch:##
+
+```pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118```
+## Second Install CUDA Toolkit (if not already installed):
+```Make sure you have the appropriate CUDA Toolkit installed for your GPU and driver. Download it from the NVIDIA website.```
+
+
+## Install ffmpeg (System-Wide)
+
+```Option 1 (Chocolatey): If you use Chocolatey, open a terminal (as Administrator) and run:```
+
+```choco install ffmpeg```
+```Option 2 (Scoop): If you use Scoop, run:```
+
+```scoop install ffmpeg```
+```Option 3 (Manual Install): Download the Windows build from the official FFmpeg website or from a trusted distributor, extract it, and add the ffmpeg/bin folder to your system PATH.```
+```Create and Activate a Python Virtual Environment: Open a new terminal (Command Prompt or PowerShell) and run:```
+```python -m venv memo```
+```To activate the virtual environment:```
+```Command Prompt (cmd.exe):```
+```memo\Scripts\activate```
+```PowerShell:```
+.\memo\Scripts\Activate.ps1
+pip install -e .```
 ```
 
 > Our code will download the checkpoint from Hugging Face automatically, and the models for face analysis and vocal separation will be downloaded to `misc_model_dir` of `configs/inference.yaml`. If you want to download the models manually, please download the checkpoint from [here](https://huggingface.co/memoavatar/memo) and specify the path in `model_name_or_path` of `configs/inference.yaml`.
